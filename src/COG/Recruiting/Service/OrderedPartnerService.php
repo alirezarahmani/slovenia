@@ -14,6 +14,11 @@ class OrderedPartnerService implements PartnerServiceInterface
      */
     private $repository;
 
+    /**
+     * OrderedPartnerService constructor.
+     *
+     * @param HotelRepositoryInterface $hotelRepository
+     */
     public function __construct(HotelRepositoryInterface $hotelRepository)
     {
         $this->repository = $hotelRepository;
@@ -21,7 +26,7 @@ class OrderedPartnerService implements PartnerServiceInterface
 
     /**
      * @param int $cityId
-     * return Dto and upper layer will call getAsArray
+     * return Dto and upper layer will call getArrayCopy
      * @return HotelDto
      */
     public function getResultForCityId($cityId): HotelDto

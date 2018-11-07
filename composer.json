@@ -1,31 +1,36 @@
 {
-    "name": "cashongo/recruiting",
-    "description": "This is the cashongo recruiting test. This source is for a restricted audience and you are not allowed to pass it to other people without permission.",
-    "authors": [
-        {
-            "name": "Vova Lando",
-            "email": "vova.lando@cashongo.co.uk"
-        }
-    ],
-
-    "config": {
-        "bin-dir": "bin"
+  "name": "cashongo/recruiting",
+  "description": "This is the cashongo recruiting test. This source is for a restricted audience and you are not allowed to pass it to other people without permission.",
+  "authors": [
+    {
+      "name": "Vova Lando",
+      "email": "vova.lando@cashongo.co.uk"
+    }
+  ],
+  "config": {
+    "bin-dir": "bin"
+  },
+  "autoload": {
+    "psr-0": {
+      "COG\\Recruiting": "src/"
     },
-
-    "autoload": {
-        "psr-0": {
-            "COG\\Recruiting": "src/",
-            "COG\\Config": "config/"
-        }
-    },
-
-    "require": {
-        "phpunit/phpunit": "3.7.*",
-        "phpunit/php-invoker" : ">=1.1.0@stable",
-        "mikey179/vfsStream": "1.1.0",
-        "beberlei/assert": "dev-master",
-        "symfony/dependency-injection": "^4.1"
-    },
-
-    "minimum-stability": "dev"
+    "psr-4": {
+      "COG\\Config\\": "config/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "COG\\Tests\\": "test/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "6.0.*"
+  },
+  "require": {
+    "mikey179/vfsStream": "1.1.0",
+    "beberlei/assert": "dev-master",
+    "symfony/dependency-injection": "^4.1",
+    "ext-http": "*"
+  },
+  "minimum-stability": "dev"
 }

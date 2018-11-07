@@ -4,8 +4,13 @@ declare(strict_types=1);
 namespace COG\Recruiting\Repositories;
 
 use Assert\Assertion;
-use COG\DataStorageInterface;
+use COG\Recruiting\Storage\DataStorageInterface;
 
+/**
+ * Class HotelJsonFileRepository
+ *
+ * @package COG\Recruiting\Repositories
+ */
 class HotelJsonFileRepository implements HotelRepositoryInterface
 {
     /**

@@ -3,26 +3,37 @@ declare(strict_types=1);
 
 namespace COG\Recruiting\Dto;
 
+use COG\Recruiting\Entity\Hotel;
 use COG\Recruiting\Entity\Partner;
 use COG\Recruiting\Entity\Price;
 use COG\Recruiting\ValueObjects\Homepage;
 
+/**
+ * Class HotelDto
+ * https://martinfowler.com/eaaCatalog/dataTransferObject.html
+ * @package COG\Recruiting\Dto
+ */
 class HotelDto
 {
     private $hotels = [];
     private $partnerDto;
     private $priceDto;
 
+    /**
+     * HotelDto constructor.
+     */
     public function __construct()
     {
         $this->partnerDto = new PartnerDto;
         $this->priceDto = new PriceDto;
     }
 
-    public function add(array $hotels): void
+    /**
+     * @param Hotel $hotel
+     */
+    public function add(Hotel $hotel): void
     {
-        foreach ($hotels as $hotelId => list($name, $adr, $hotelPartners)) {
-            foreach ($hotelPartners as $partnerId => list($partnerName, $url, $prices)) {
+            foreach ($hotel->partners() as $partnerId => list($partnerName, $url, $prices)) {
                 foreach ($prices as $priceId => list($description, $amount, $from, $to)) {
                     $this->priceDto->add(
                         new Price(
@@ -39,20 +50,21 @@ class HotelDto
                         intval($partnerId),
                         $partnerName,
                         new Homepage($url),
-                        $this->priceDto->getAsArray()
+                        $this->priceDto->getArrayCopy()
                     )
                 );
             }
-            $this->hotels[] = compact(
-                intval($hotelId),
-                $name,
-                $adr,
-                $this->partnerDto->getAsArray()
-            );
-        }
+
+            $this->hotels[] = [
+                'id' => intval($hotel->id()),
+                'name' => $hotel->name(),
+                'address' => $hotel->address(),
+                'partner' => $this->partnerDto->getArrayCopy()
+            ];
+
     }
 
-    public function getAsArray(): array
+    public function getArrayCopy(): array
     {
         return $this->hotels;
     }

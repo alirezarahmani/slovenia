@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace COG;
+namespace COG\Recruiting\Storage;
 
 use Assert\Assertion;
 use COG\Config\Configuration;
@@ -23,7 +23,7 @@ final class JsonDataStore implements DataStorageInterface
     {
         $rootDir = Configuration::setting()['root'];
         try {
-            Assertion::file($file = $rootDir . 'data' . $id . '.json', $id . ' : is not exist');
+            Assertion::file($file = $rootDir . 'data/' . $id . '.json', $id . ' : is not exist');
             $jsonData = file_get_contents($file);
             $data = json_decode($jsonData, true);
             Assertion::true(json_last_error() == JSON_ERROR_NONE, 'make sure the source file has valid data');

@@ -3,6 +3,11 @@ declare(strict_types=1);
 
 namespace COG\Recruiting\Service;
 
+/**
+ * Class PartnerNameOrderedHotelService
+ *
+ * @package COG\Recruiting\Service
+ */
 class PartnerNameOrderedHotelService implements HotelServiceInterface
 {
 

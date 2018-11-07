@@ -7,6 +7,11 @@ use COG\Recruiting\Dto\HotelDto;
 use COG\Recruiting\Repositories\HotelJsonFileRepository;
 use COG\Recruiting\Repositories\HotelRepositoryInterface;
 
+/**
+ * Class UnorderedPartnerService
+ *
+ * @package COG\Recruiting\Service
+ */
 class UnorderedPartnerService implements PartnerServiceInterface
 {
     /**
@@ -21,7 +26,7 @@ class UnorderedPartnerService implements PartnerServiceInterface
 
     /**
      * @param int $cityId
-     * return Dto and upper layer will call getAsArray
+     * return Dto and upper layer will call getArrayCopy
      * @return HotelDto
      */
     public function getResultForCityId($cityId): HotelDto

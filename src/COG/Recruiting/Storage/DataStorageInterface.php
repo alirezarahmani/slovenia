@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace COG;
+namespace COG\Recruiting\Storage;
 
 interface DataStorageInterface
 {

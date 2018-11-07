@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace COG;
+namespace COG\Recruiting\Container;
 
 use COG\Config\Configuration;
 use COG\Recruiting\Repositories\HotelJsonFileRepository;
@@ -9,6 +9,7 @@ use COG\Recruiting\Service\OrderedPartnerService;
 use COG\Recruiting\Service\PartnerNameOrderedHotelService;
 use COG\Recruiting\Service\UnorderedHotelService;
 use COG\Recruiting\Service\UnorderedPartnerService;
+use COG\Recruiting\Storage\JsonDataStore;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
