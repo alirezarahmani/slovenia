@@ -14,14 +14,17 @@
 
     "autoload": {
         "psr-0": {
-            "COG\\Recruiting": "src/"
+            "COG\\Recruiting": "src/",
+            "COG\\Config": "config/"
         }
     },
 
     "require": {
         "phpunit/phpunit": "3.7.*",
         "phpunit/php-invoker" : ">=1.1.0@stable",
-        "mikey179/vfsStream": "1.1.0"
+        "mikey179/vfsStream": "1.1.0",
+        "beberlei/assert": "dev-master",
+        "symfony/dependency-injection": "^4.1"
     },
 
     "minimum-stability": "dev"

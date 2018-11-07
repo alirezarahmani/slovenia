@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace COG\Recruiting\Entity;
 
@@ -15,14 +16,14 @@ class Price
      * 
      * @var string
      */
-    public $description;
+    private $description;
 
     /**
      * Price in euro
      * 
      * @var float
      */
-    public $amount;
+    private $amount;
 
     /**
      * Arrival date, represented by a DateTime obj
@@ -31,7 +32,7 @@ class Price
      *
      * @var \DateTime
      */
-    public $fromDate;
+    private $fromDate;
 
     /**
      * Departure date, represented by a DateTime obj
@@ -40,5 +41,78 @@ class Price
      *
      * @var \DateTime
      */
-    public $toDate;
+    private $toDate;
+
+    /**
+     * @var int|null
+     */
+    private $id;
+
+    /**
+     * Price constructor.
+     *
+     * @param int|null  $id
+     * @param string    $description
+     * @param float     $amount
+     * @param \DateTime $fromDate
+     * @param \DateTime $toDate
+     */
+    public function __construct(?int $id, string $description, float $amount, \DateTime $fromDate, \DateTime $toDate)
+    {
+        $this->id = $id;
+        $this->description = $description;
+        $this->amount = $amount;
+        $this->fromDate = $fromDate;
+        $this->toDate = $toDate;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function id(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function description()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return float
+     */
+    public function amount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function fromDate()
+    {
+        return $this->fromDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function toDate()
+    {
+        return $this->toDate;
+    }
+
+    /**
+     * @param Price $price
+     *
+     * @return bool
+     */
+    public function sameAs(Price $price)
+    {
+        return ($this->id === $price->id() && is_a($price, $this));
+    }
 }

@@ -3,12 +3,7 @@ declare(strict_types=1);
 
 namespace COG\Recruiting\Service;
 
-/**
- * This class is an (unfinished) example implementation of an unordered hotel service.
- *
- * @author vovke
- */
-class UnorderedHotelService implements HotelServiceInterface
+class PartnerNameOrderedHotelService implements HotelServiceInterface
 {
 
     /**
@@ -18,19 +13,19 @@ class UnorderedHotelService implements HotelServiceInterface
 
     /**
      * Maps from city name to the id for the partner service.
-     *  
+     *
      * @var array
      */
     private $cityToIdMapping = array(
-            "Düsseldorf" => 14575
-        );
+        "Düsseldorf" => 14575
+    );
 
     /**
      * @param PartnerServiceInterface $partnerService
      */
     public function __construct(PartnerServiceInterface $partnerService)
     {
-       $this->partnerService = $partnerService;
+        $this->partnerService = $partnerService;
     }
 
     /**
