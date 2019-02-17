@@ -9,13 +9,13 @@ use PHPUnit\Framework\TestCase as TestCase;
 class HotelDtoTest extends TestCase
 {
     /** @test */
-    public function should_return_correct_array()
+    public function should_return_right_customer()
     {
-        $hotelDto = new HotelDto;
-        $hotel = new Hotel(1, 'grand', 'here', []);
-        $hotelDto->add($hotel);
-        $this->assertEquals($hotelDto->getArrayCopy()[0]['id'], 1);
-        $this->assertEquals($hotelDto->getArrayCopy()[0]['name'], 'grand');
-        $this->assertEquals($hotelDto->getArrayCopy()[0]['address'], 'here');
+        $hotel = new Hotel();
+        $storage = new StorageTest();
+        $hotel->addCustomer('fake name', 'fake last name');
+        $customer = $storage->getCustomerByName('fake name');
+        $this->assertEquals($customer->name(), 'fake name');
+        $this->assertEquals($customer->lastName(), 'fake last name');
     }
 }
